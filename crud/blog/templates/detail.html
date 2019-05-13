@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+
+    {% block content %}
+    <h2>{{post.title}}</h2>
+    <h5>{{post.contents}}</h5>
+    <h5>{{post.price}}</h5>
+    <h5>{{post.contents}}</h5>
+    <h5>{{post.contents}}</h5>
+    <h5>{{post.author}}</h5>
+    <a href="{%url 'home' %}">글 목록으로 돌아가기</a>
+    <br>
+    {% if user.is_authenticated and post.author == user.username%}
+    <a href="{% url 'edit' post.pk %}">수정하기</a>
+    <br>
+    <a href="{% url 'delete' post.pk %}">삭제하기</a>
+    {% endif %}
+    {% endblock %}

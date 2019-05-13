@@ -1,0 +1,25 @@
+{% load static %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}"/>
+    <title>My Blog</title>
+</head>
+<body>
+    <div class="navbar">
+        {% if user.is_authenticated %}
+            <div class="navitem">안녕하세요 {{user.username}}님</div>
+            <div class="navitem"><a href="{% url 'logout' %}">로그아웃</a></div>
+        {% else %}
+            <div class="navitem"><a href="{% url 'signup' %}">회원가입</a></div>
+            <div class="navitem"><a href="{% url 'login' %}">로그인</a></div>
+        {% endif %}
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
